@@ -1,10 +1,12 @@
 package com.example.stone.designsupportdemo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -42,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         RecyclerFragment f2 = RecyclerFragment.newInstance(2);
         RecyclerFragment f3 = RecyclerFragment.newInstance(3);
         RecyclerFragment f4 = RecyclerFragment.newInstance(4);
-        //TestFragment test = new TestFragment();
         vpa.add(f1, "Linear");
         vpa.add(f2,"big");
         vpa.add(f3,"drag");
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(vpa);
         viewPager.setOffscreenPageLimit(4);
         tabLayout.setupWithViewPager(viewPager);
+        //選單可滾動模式 預設固定
+        //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         coord.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -61,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 RecyclerFragment f = (RecyclerFragment) vpa.getItem(viewPager.getCurrentItem());
                 f.add();
+                //snackBar 23版有bug
+                //Snackbar.make(v,"test",Snackbar.LENGTH_SHORT).show();
             }
         });
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -70,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
                     case(R.id.nav_removeAll):{
                         RecyclerFragment f = (RecyclerFragment) vpa.getItem(viewPager.getCurrentItem());
                         f.removeAll();
+                        break;
+                    }
+                    case(R.id.nav_test1):{
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this,test1Activity.class);
+                        MainActivity.this.startActivity(intent);
+                        break;
                     }
                 }
                 menuItem.setChecked(false);

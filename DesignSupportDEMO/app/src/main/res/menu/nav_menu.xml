@@ -5,8 +5,8 @@
             android:id="@+id/nav_removeAll"
             android:title="removeAll" />
         <item
-            android:id="@+id/nav_messages"
-            android:title="Messages" />
+            android:id="@+id/nav_test1"
+            android:title="test1" />
         <item
             android:id="@+id/nav_friends"
             android:title="Friends" />

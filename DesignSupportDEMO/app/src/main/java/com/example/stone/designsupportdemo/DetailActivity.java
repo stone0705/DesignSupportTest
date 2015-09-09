@@ -75,37 +75,4 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    class DeAdapter extends RecyclerView.Adapter<DViewHolder>{
-        ArrayList<String> datalist;
-        public DeAdapter(ArrayList<String> datalist){
-            this.datalist = datalist;
-        }
-        @Override
-        public DViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-            View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.detail_item, viewGroup, false);
-            DViewHolder vh = new DViewHolder(v);
-            return vh;
-        }
-
-        @Override
-        public void onBindViewHolder(DViewHolder dViewHolder, int i) {
-            dViewHolder.text.setText(datalist.get(i));
-        }
-
-        @Override
-        public int getItemCount() {
-            return datalist.size();
-        }
-        public void add(String s){
-            datalist.add(s);
-            notifyItemInserted(datalist.size());
-        }
-    }
-    class DViewHolder extends RecyclerView.ViewHolder{
-        TextView text;
-        public DViewHolder(View itemView) {
-            super(itemView);
-            text = (TextView)itemView.findViewById(R.id.detailText);
-        }
-    }
 }
