@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 RecyclerFragment f = (RecyclerFragment) vpa.getItem(viewPager.getCurrentItem());
                 f.add();
                 //snackBar 23版有bug
-                //Snackbar.make(v,"test",Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(v,"test",Snackbar.LENGTH_LONG).show();
             }
         });
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
